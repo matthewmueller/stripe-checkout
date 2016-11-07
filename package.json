@@ -1,0 +1,21 @@
+{
+  "name": "stripe-checkout",
+  "version": "1.0.0",
+  "description": "standalone stripe checkout handler",
+  "keywords": [
+    "stripe"
+  ],
+  "author": "Matthew Mueller <mattmuelle@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MatthewMueller/stripe-checkout.git"
+  },
+  "dependencies": {
+    "deferral": "1.0.0",
+    "little-loader": "0.2.0"
+  },
+  "devDependencies": {
+    "budo": "9.2.1"
+  },
+  "main": "index"
+}
