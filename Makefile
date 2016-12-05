@@ -6,4 +6,7 @@ test:
 		--require should \
 		--reporter spec
 
+check:
+	browserify index.js | uglifyjs
+
 .PHONY: test

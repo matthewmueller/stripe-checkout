@@ -25,7 +25,9 @@ function Stripe (setup, script) {
   script = script || 'https://checkout.stripe.com/checkout.js'
 
   const loading = new Deferred()
-  Load && Load(script, (err) => err ? loading.reject(err) : loading.resolve())
+  Load && Load(script, function (err) {
+    return err ? loading.reject(err) : loading.resolve()
+  })
 
   return function stripe (params) {
     if (!Load) return Promise.reject('This module is only supported on the browser-side')
