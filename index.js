@@ -33,7 +33,12 @@ function Stripe (setup, script) {
     if (!Load) return Promise.reject('This module is only supported on the browser-side')
     const complete = new Deferred()
     const config = Object.assign({
-      token: function (token) { complete.resolve(token) }
+      token: function (token) {
+        complete.resolve(token)
+      },
+      closed: function () {
+        complete.resolve(false)
+      }
     }, setup, params)
 
     return loading
