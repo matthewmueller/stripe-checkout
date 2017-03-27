@@ -1,4 +1,9 @@
 
+1.0.4 / 2017-03-27
+==================
+
+  * bring in the loader to support node environments
+
 1.0.3 / 2017-01-27
 ==================
 
