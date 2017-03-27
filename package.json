@@ -11,7 +11,7 @@
     "url": "git://github.com/MatthewMueller/stripe-checkout.git"
   },
   "dependencies": {
-    "deferral": "1.0.0",
+    "deferral": "^1.0.0",
     "little-loader": "0.2.0"
   },
   "devDependencies": {

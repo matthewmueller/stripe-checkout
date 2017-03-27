@@ -3,12 +3,7 @@
  */
 
 var Deferred = require('deferral')
-
-/**
- * Loader
- */
-
-var Load = typeof document !== 'undefined' && require('little-loader')
+var Load = require('./load')
 
 /**
  * Export `Stripe`
