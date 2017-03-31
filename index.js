@@ -3,7 +3,14 @@
  */
 
 var Deferred = require('deferral')
-var Load = require('./load')
+
+/**
+ * Async loader on the browser-side
+ */
+
+var Load = typeof window !== 'undefined'
+  ? require('./load')
+  : function () {}
 
 /**
  * Export `Stripe`
