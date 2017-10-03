@@ -27,8 +27,6 @@ function Stripe(setup, script) {
   const loading = tryLoading(script, new Deferred(), 5)
 
   return function stripe(params) {
-    if (!Load)
-      return Promise.reject('This module is only supported on the browser-side')
     const complete = new Deferred()
     const config = Object.assign(
       {
@@ -52,7 +50,9 @@ function Stripe(setup, script) {
 }
 
 function tryLoading(script, deferred, retry) {
-  if (retry <= 0) {
+  if (!Load) {
+    return deferred.reject('This module is only supported on the browser-side')
+  } else if (retry <= 0) {
     return deferred.reject('timeout expired')
   }
 
