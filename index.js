@@ -8,7 +8,8 @@ var Deferred = require('deferral')
  * Async loader on the browser-side
  */
 
-var Load = typeof window !== 'undefined' ? require('./load') : function() {}
+var isBrowser = typeof window !== 'undefined'
+var Load = isBrowser ? require('./load') : function() {}
 
 /**
  * Export `Stripe`
@@ -50,7 +51,7 @@ function Stripe(setup, script) {
 }
 
 function tryLoading(script, deferred, retry) {
-  if (!Load) {
+  if (!isBrowser) {
     return deferred.reject('This module is only supported on the browser-side')
   } else if (retry <= 0) {
     return deferred.reject('timeout expired')
