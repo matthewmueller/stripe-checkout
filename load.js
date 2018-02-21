@@ -18,7 +18,7 @@
  * - https://connect.microsoft.com/IE/feedback/details/729164/
  *           ie10-dynamic-script-element-fires-loaded-readystate-prematurely
  */
-(function () {
+;(function() {
   // Global state.
   var pendingScripts = {}
   var scriptCounter = 0
@@ -29,7 +29,7 @@
    * @param {Object} script Script DOM object
    * @returns {void}
    */
-  var _addScript = function (script) {
+  var _addScript = function(script) {
     // Get the first script element, we're just going to use it
     // as a reference for where to insert ours. Do NOT try to do
     // this just once at the top and then re-use the same script
@@ -53,7 +53,7 @@
    * @param {Object}            context   (Optional) Callback context (`this`)
    * @returns {void}
    */
-  var _lload = function (src, callback, context) {
+  var _lload = function(src, callback, context) {
     /* eslint max-statements: [2, 32] */
     var setup
 
@@ -75,9 +75,11 @@
      *
      * @returns {void}
      */
-    var _finish = function () {
+    var _finish = function() {
       // Only call once.
-      if (done) { return }
+      if (done) {
+        return
+      }
       done = true
 
       // Internal cleanup.
@@ -94,7 +96,7 @@
      *
      * @returns {void}
      */
-    var _error = function () {
+    var _error = function() {
       err = new Error(src || 'EMPTY')
       _finish()
     }
@@ -111,7 +113,7 @@
       var inserted = false
 
       // Clear out listeners, state.
-      _cleanup = function () {
+      _cleanup = function() {
         script.onreadystatechange = script.onerror = null
         pendingScripts[id] = void 0
       }
@@ -119,11 +121,13 @@
       // Attach the handler before setting src, otherwise we might
       // miss events (consider that IE could fire them synchronously
       // upon setting src, for example).
-      script.onreadystatechange = function () {
+      script.onreadystatechange = function() {
         var firstState = script.readyState
 
         // Protect against any errors from state change randomness.
-        if (err) { return }
+        if (err) {
+          return
+        }
 
         if (!inserted && isReady[firstState]) {
           inserted = true
@@ -209,7 +213,7 @@
       // This section is for modern browsers, including IE10+.
 
       // Clear out listeners.
-      _cleanup = function () {
+      _cleanup = function() {
         script.onload = script.onerror = null
       }
 
@@ -237,9 +241,11 @@
     module.exports = _lload
   } else if (typeof define === 'function' && define.amd) {
     // AMD
-    define([], function () { return _lload })
+    define([], function() {
+      return _lload
+    })
   } else {
     // VanillaJS
     window._lload = _lload
   }
-}())
+})()
