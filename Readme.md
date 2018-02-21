@@ -14,6 +14,10 @@ npm install stripe-checkout
 const Stripe = require('stripe-checkout')
 
 // configure and start lazy-loading the stripe script
+//
+// I'll usually just stick this on the top of the page
+// so stripe is all loaded by the time we want to open
+// up checkout.
 const stripe = Stripe({
   // don't put your secret here!
   key: process.env.STRIPE_CLIENT_ID
