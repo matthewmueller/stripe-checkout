@@ -1,6 +1,6 @@
 # stripe-checkout
 
-Open up [Stripe Checkout]() without any hassle.
+Open up [Stripe Checkout](https://stripe.com/checkout) without any hassle.
 
 ## Install
 
