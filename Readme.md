@@ -23,12 +23,13 @@ const stripe = Stripe({
   key: process.env.STRIPE_CLIENT_ID
 })
 
-// later in your application
-// call this to open up stripe checkout
+// later in your application, when the user
+// clicks on a button or something, call
+// this to open up stripe checkout.
 stripe({
   locale: 'auto',
-  name: 'Authory',
-  description: "A Journalist's Digital Repository",
+  name: 'Your Website',
+  description: 'Small website blurb',
   amount: 10 * 100,
   email: 'test@test.com',
   allowRememberMe: false,
